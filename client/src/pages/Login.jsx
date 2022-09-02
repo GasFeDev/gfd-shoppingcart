@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { login } from "../redux/apiCalls";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
+import { userSlice } from "../redux/userRedux";
 
 const Container = styled.div`
   width: 100vw;
@@ -65,7 +66,8 @@ const Error = styled.span`
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch(); */
+  const { dispatch } = userSlice.reducer;
   const { isFetching, error } = useSelector((state) => state.user);
   /* useSelector es un Hook que nos permite extraer datos del store de Redux utilizando una función selectora,  */
 
@@ -87,7 +89,7 @@ const Login = () => {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick} disabled={isFetching}>
+          <Button onClick={handleClick} /* disabled={isFetching} */>
             INICIAR SESIÓN
           </Button>
           {error && <Error>Algo salió mal...</Error>}
