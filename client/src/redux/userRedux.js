@@ -11,7 +11,7 @@ reducers → objeto que contiene los reducers y actions asociados a ellos. */
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    currentUser: JSON.parse(localStorage.getItem("user")) || null,
+    currentUser: JSON.parse(localStorage.getItem("currentUser")) || null,
     isFetching: false,
     error: false,
   },
