@@ -1,10 +1,7 @@
 import { loginFailure, loginStart, loginSuccess } from "./userRedux";
-import axios from "axios";
-import { publicRequest } from "../requestMethods";
-
-const axiosInstance = axios.create({
-  BASE_URL: "https://gfd-shoppingcart.herokuapp.com/api/",
-});
+/* import axios from "axios";
+import { publicRequest } from "../requestMethods"; */
+import { axiosInstance } from "../config";
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
