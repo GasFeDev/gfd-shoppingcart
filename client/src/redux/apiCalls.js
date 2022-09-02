@@ -3,7 +3,7 @@ import axios from "axios";
 import { publicRequest } from "../requestMethods";
 
 const axiosInstance = axios.create({
-  BASE_URL: process.env.REACT_APP_API_URL,
+  BASE_URL: "https://gfd-shoppingcart.herokuapp.com/api/",
 });
 
 export const login = async (dispatch, user) => {
