@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { login } from "../redux/apiCalls";
@@ -61,11 +61,19 @@ const Button = styled.button`
 const Error = styled.span`
   color: red;
 `;
+const INITIAL_STATE = {
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  isFetching: false,
+  error: false,
+};
+
+export const AuthContext = createContext(INITIAL_STATE);
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  /* const dispatch = useDispatch(); */
+  const { dispatch } = useContext(AuthContext);
   const { isFetching, error } = useSelector((state) => state.user);
   console.log(isFetching);
   /* useSelector es un Hook que nos permite extraer datos del store de Redux utilizando una función selectora,  */
