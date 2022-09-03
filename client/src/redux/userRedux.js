@@ -17,12 +17,6 @@ const userSlice = createSlice({
   },
 
   reducers: {
-    initialStart: (state) => {
-      state.currentUser =
-        JSON.parse(localStorage.getItem("state.currentUser")) || null;
-      state.isFetching = false;
-      state.error = false;
-    },
     loginStart: (state) => {
       state.isFetching = true;
     },

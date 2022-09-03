@@ -66,8 +66,8 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { error, initialState } = useSelector((state) => state.user);
-  console.log(initialState);
+  const { isFetching, error } = useSelector((state) => state.user);
+  console.log(isFetching);
   /* useSelector es un Hook que nos permite extraer datos del store de Redux utilizando una función selectora,  */
   const handleClick = (e) => {
     e.preventDefault();
@@ -87,7 +87,7 @@ const Login = () => {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick} disabled={initialState}>
+          <Button onClick={handleClick} disabled={isFetching}>
             INICIAR SESIÓN
           </Button>
           {error && <Error>Algo salió mal...</Error>}
