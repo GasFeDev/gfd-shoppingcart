@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess } from "./AuthActions";
+import { loginFailure, loginStart, loginSuccess } from "./userRedux";
 /* import axios from "axios";
 import { publicRequest } from "../requestMethods"; */
 import { axiosInstance } from "../config";
