@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { login } from "../redux/apiCalls";
 import { mobile } from "../responsive";
-/* import { useDispatch, useSelector } from "react-redux"; */
-import { AuthContext } from "../redux/userRedux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
   width: 100vw;
@@ -59,20 +58,27 @@ const Button = styled.button`
   }
 `;
 
-/* const Error = styled.span`
+const Error = styled.span`
   color: red;
-`; */
+`;
+const INITIAL_STATE = {
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  isFetching: false,
+  error: false,
+};
+
+export const AuthContext = createContext(INITIAL_STATE);
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  /* const dispatch = useDispatch(); */
-  const { dispatch } = useContext(AuthContext);
-  /* const { isFetching, error } = useSelector((state) => state.user); */
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+  console.log(isFetching);
   /* useSelector es un Hook que nos permite extraer datos del store de Redux utilizando una función selectora,  */
   const handleClick = (e) => {
     e.preventDefault();
-    login({ email, password }, dispatch);
+    login(dispatch, { username, password });
   };
   return (
     <Container>
@@ -80,17 +86,18 @@ const Login = () => {
         <Title>ACCEDER</Title>
         <Form>
           <Input
-            type="email"
-            placeholder="Ingrese su correo electrónico"
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Nombre de usuario"
+            onChange={(e) => setUsername(e.target.value)}
           />
           <Input
+            placeholder="Contraseña"
             type="password"
-            placeholder="Ingrese su contraseña"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick}>INICIAR SESIÓN</Button>
-          {/*  {error && <Error>Algo salió mal...</Error>} */}
+          <Button onClick={handleClick} disabled={isFetching}>
+            INICIAR SESIÓN
+          </Button>
+          {error && <Error>Algo salió mal...</Error>}
 
           <Link to="/register">
             ¿NO RECUERDAS LA CONTRASEÑA? CREA UNA CUENTA NUEVA
