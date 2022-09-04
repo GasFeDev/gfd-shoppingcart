@@ -1,7 +1,7 @@
 /* import { axiosInstance } from "./config"; */
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/";
+const BASE_URL = "https://gfd-shoppingcart.herokuapp.com/api/";
 
 /* const TOKEN =
   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
