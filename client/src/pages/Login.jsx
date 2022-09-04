@@ -59,12 +59,12 @@ const Button = styled.button`
   }
 `;
 
-const Error = styled.span`
+/* const Error = styled.span`
   color: red;
-`;
+`; */
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   /* const dispatch = useDispatch(); */
   const { dispatch } = useContext(AuthContext);
@@ -72,7 +72,7 @@ const Login = () => {
   /* useSelector es un Hook que nos permite extraer datos del store de Redux utilizando una función selectora,  */
   const handleClick = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    login({ email, password }, dispatch);
   };
   return (
     <Container>
@@ -80,12 +80,13 @@ const Login = () => {
         <Title>ACCEDER</Title>
         <Form>
           <Input
-            placeholder="Nombre de usuario"
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            placeholder="Ingrese su correo electrónico"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Input
-            placeholder="Contraseña"
             type="password"
+            placeholder="Ingrese su contraseña"
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button onClick={handleClick}>INICIAR SESIÓN</Button>

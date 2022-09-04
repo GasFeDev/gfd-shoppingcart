@@ -43,6 +43,15 @@ export const { loginStart, loginSuccess, loginFailure, logout } =
 export default userSlice.reducer; */
 
 import { createContext, useEffect, useReducer } from "react";
+
+const INITIAL_STATE = {
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  isFetching: false,
+  error: false,
+};
+
+export const AuthContext = createContext(INITIAL_STATE);
+
 const AuthReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_START":
@@ -75,14 +84,6 @@ const AuthReducer = (state, action) => {
 };
 
 export default AuthReducer;
-
-const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem("user")) || null,
-  isFetching: false,
-  error: false,
-};
-
-export const AuthContext = createContext(INITIAL_STATE);
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
