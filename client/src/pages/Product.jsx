@@ -66,6 +66,7 @@ const FilterTitle = styled.span`
   font-size: 20px;
   font-weight: 200;
   margin-left: 20px;
+  ${mobile({ width: "12vh", marginLeft: "-10px" })}
 `;
 
 const FilterColor = styled.div`
@@ -76,12 +77,14 @@ const FilterColor = styled.div`
   margin: 0px 5px;
   cursor: pointer;
   border: 1px solid;
+  ${mobile({ width: "12px", margin: "0px 2px", marginLeft: "-1px" })}
 `;
 
 const FilterSize = styled.select`
   margin-left: 5px;
   padding: 5px;
   border: 1px solid;
+  ${mobile({ padding: "1px" })}
 `;
 
 const FilterSizeOption = styled.option``;

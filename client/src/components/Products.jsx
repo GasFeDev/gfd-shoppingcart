@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { popularProducts } from "../data";
 import Product from "./Product";
-import { axiosInstance } from "../config";
+import axios from "axios";
 
 const Container = styled.div`
   padding: 20px;
@@ -18,7 +18,7 @@ const Products = ({ cat, filters, sort }) => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axiosInstance.get(
+        const res = await axios.get(
           cat
             ? `https://gfd-shoppingcart.herokuapp.com/api/products?category=${cat}`
             : "https://gfd-shoppingcart.herokuapp.com/api/products"

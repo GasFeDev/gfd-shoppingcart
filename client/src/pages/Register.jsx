@@ -103,7 +103,13 @@ export default function Register() {
             type="password"
             minLength="6"
           />
-          <Input placeholder="Confirmar Contraseña " />
+          <Input
+            placeholder="Confirmar Contraseña "
+            required
+            ref={passwordRef}
+            type="password"
+            minLength="6"
+          />
           <Agreement>
             Al crear la cuenta, doy mi consentimiento para el procesamiento de
             mis datos personales, de acuerdo con la

@@ -73,6 +73,7 @@ const ProductDetail = styled.div`
   flex: 2;
   display: flex;
   padding: 5px;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const Image = styled.img`

@@ -2,14 +2,14 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
-import { mobile } from "../responsive";
+import { mobile, mini } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../redux/userRedux";
 
 const Container = styled.div`
   height: 80px;
-  ${mobile({ height: "50px" })}
+  ${mobile({ height: "100px", width: "80vh" })}
 `;
 
 const Wrapper = styled.div`
@@ -38,6 +38,7 @@ const SearchContainer = styled.div`
   align-items: center;
   margin-left: 25px;
   padding: 5px;
+  ${mobile({ marginTop: "-5px", marginLeft: "5px" })}
 `;
 
 const Input = styled.input`
@@ -52,21 +53,42 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
-  ${mobile({ fontSize: "24px" })}
+  ${mobile({
+    fontSize: "20px",
+    position: "absolute",
+    display: "flex",
+    left: "192px",
+    marginTop: "15px",
+  })}
+  ${mini({
+    fontSize: "20px",
+    position: "absolute",
+    display: "flex",
+    left: "102px",
+    marginTop: "15px",
+  })}
 `;
 const Right = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
+  ${mobile({ flex: 2, justifyContent: "center", position: "absolute" })}
 `;
 
 const MenuItem = styled.div`
   font-size: 15px;
   cursor: pointer;
   margin-left: 30px;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  ${mobile({
+    fontSize: "10px",
+    marginLeft: "10px",
+    marginTop: "5px",
+    bottom: "-40px",
+    left: "2px",
+    position: "relative",
+    display: "flex",
+  })}
 `;
 
 /* useSelector: Le permite extraer datos del estado de la tienda Redux, utilizando una función de selección.

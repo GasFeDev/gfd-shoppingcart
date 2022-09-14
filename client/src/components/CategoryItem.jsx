@@ -31,7 +31,8 @@ const Info = styled.div`
 const Title = styled.h1`
   color: white;
   margin-bottom: 20px;
-  font-weight: 800;
+  font-weight: 500;
+  font-size: 20px;
 `;
 
 const Button = styled.button`
@@ -41,6 +42,7 @@ const Button = styled.button`
   color: gray;
   cursor: pointer;
   font-weight: 650;
+  ${mobile({ height: "10vh" })}
 `;
 
 const CategoryItem = ({ item }) => {
